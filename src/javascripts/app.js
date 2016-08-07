@@ -1,3 +1,11 @@
-import './modules'
+import Vue from 'vue';
 
-console.log(`app.js has loaded!`)
+
+console.log(Vue);
+
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue.js!'
+  }
+});

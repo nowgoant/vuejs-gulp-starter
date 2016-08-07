@@ -1,15 +1,14 @@
-var config       = require('../config')
-if(!config.tasks.html) return
+var config = require('../config')
+if (!config.tasks.html) return
 
-var browserSync  = require('browser-sync')
-var data         = require('gulp-data')
-var gulp         = require('gulp')
-var gulpif       = require('gulp-if')
+var browserSync = require('browser-sync')
+var data = require('gulp-data')
+var gulp = require('gulp')
+var gulpif = require('gulp-if')
 var handleErrors = require('../lib/handleErrors')
-var htmlmin      = require('gulp-htmlmin')
-var path         = require('path')
-var render       = require('gulp-nunjucks-render')
-var fs           = require('fs')
+var htmlmin = require('gulp-htmlmin')
+var path = require('path')
+var fs = require('fs')
 
 var exclude = path.normalize('!**/{' + config.tasks.html.excludeFolders.join(',') + '}/**')
 
@@ -28,12 +27,12 @@ var htmlTask = function() {
   return gulp.src(paths.src)
     .pipe(data(getData))
     .on('error', handleErrors)
-    .pipe(render({
-      path: [path.join(config.root.src, config.tasks.html.src)],
-      envOptions: {
-        watch: false
-      }
-    }))
+    // .pipe(render({
+    //   path: [path.join(config.root.src, config.tasks.html.src)],
+    //   envOptions: {
+    //     watch: false
+    //   }
+    // }))
     .on('error', handleErrors)
     .pipe(gulpif(global.production, htmlmin(config.tasks.html.htmlmin)))
     .pipe(gulp.dest(paths.dest))
