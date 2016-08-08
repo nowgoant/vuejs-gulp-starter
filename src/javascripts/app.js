@@ -2,10 +2,26 @@ import Vue from 'vue';
 
 
 console.log(Vue);
-
 new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue.js!'
+    newTodo: '',
+    todos: [{
+      text: 'Add some todos'
+    }]
+  },
+  methods: {
+    addTodo: function() {
+      var text = this.newTodo.trim();
+      if (text) {
+        this.todos.push({
+          text: text
+        });
+        this.newTodo = '';
+      }
+    },
+    removeTodo: function(index) {
+      this.todos.splice(index, 1);
+    }
   }
 });
