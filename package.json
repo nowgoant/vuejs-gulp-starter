@@ -80,6 +80,6 @@
   "license": "MIT",
   "dependencies": {
     "normalize.css": "^4.0.0",
-    "vue": "^1.0.26"
+    "vue": "^1.0.28"
   }
 }
